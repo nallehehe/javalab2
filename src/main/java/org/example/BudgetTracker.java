@@ -11,7 +11,7 @@ public class BudgetTracker {
         Menu menu = new Menu();
         ExpenseStorage expenseStorage = new ExpenseStorage();
 
-        User user = new User("1", "bub", "hmm");
+        User user = new User("2", "nalle", "hmm");
 
         //https://howtodoinjava.com/java/date-time/localdate-format-example/
         /*hade massa problem med vad jag antar var serializeringen av localdate objektet
@@ -20,7 +20,7 @@ public class BudgetTracker {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String date = LocalDate.now().format(formatter);
 
-        Expense expense = new Expense(100.0, date, user, EExpenseCategory.FOOD);
+        Expense expense = new Expense(300.0, date, user, EExpenseCategory.CLOTHING);
 
         expenseStorage.saveFile(expense);
 

@@ -14,24 +14,36 @@ public class ExpenseStorage {
     private String fileName = "src/main/expense.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    public ExpenseStorage() {
+    }
+
     public void readFile() throws IOException {
         Type type = new TypeToken<Map<String, Expense>>() {}.getType();
 
         Reader reader = new FileReader(fileName);
 
         expenseList = gson.fromJson(reader, type);
-
     }
 
+    /*instansierar readFile metoden här för att kolla om json-filen redan har existerande data och om id:t är unikt så sparas ett nytt json objekt ner
+    * om id:t inte är unikt så skrivs det över!
+    *
+    * skapade även ett if-statement som kollar om expense.json ens existerar och om den inte gör det så skapar den en som du då kan spara data i*/
     public void saveFile(Expense expense) throws IOException {
-        expenseList.put(expense.getUser().getId(), expense);
+        if (fileName.isEmpty()) {
+            File file = new File(fileName);
+        } else {
+            readFile();
 
-        FileWriter fw = new FileWriter(new File(fileName));
+            expenseList.put(expense.getUser().getId(), expense);
 
-        gson.toJson(expenseList, fw);
+            FileWriter fw = new FileWriter(new File(fileName));
 
-        fw.close();
+            gson.toJson(expenseList, fw);
 
-        System.out.println("Expense saved to " + fileName);
+            fw.close();
+
+            System.out.println("Expense saved to " + fileName);
+        }
     }
 }
