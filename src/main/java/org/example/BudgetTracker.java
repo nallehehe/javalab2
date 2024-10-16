@@ -1,15 +1,31 @@
 package org.example;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class BudgetTracker {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
+        ExpenseStorage expenseStorage = new ExpenseStorage();
 
+        User user = new User("1", "bub", "hmm");
 
-        int userInput = 0;
+        //https://howtodoinjava.com/java/date-time/localdate-format-example/
+        /*hade massa problem med vad jag antar var serializeringen av localdate objektet
+        * så letade runt för andra lösningar och hittade att jag kunde formatera localdate
+        * till String istället vilket fungerade för mig!*/
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = LocalDate.now().format(formatter);
+
+        Expense expense = new Expense(100.0, date, user, EExpenseCategory.FOOD);
+
+        expenseStorage.saveFile(expense);
+
+//
+//        int userInput = 0;
 
 //        while (true) {
 //

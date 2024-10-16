@@ -1,0 +1,12 @@
+{
+  "1": {
+    "expenseCategory": "FOOD",
+    "amount": 100.0,
+    "date": "16/10/2024",
+    "user": {
+      "id": "1",
+      "firstName": "bub",
+      "lastName": "hmm"
+    }
+  }
+}
