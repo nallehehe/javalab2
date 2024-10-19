@@ -1,12 +1,13 @@
 package org.example;
 
 public class User {
-    private String id;
+//    private static final AtomicInteger counter = new AtomicInteger(0);
+//    private int id;
     private String firstName;
     private String lastName;
 
-    public User(String id, String firstName, String lastName) {
-        this.id = id;
+    public User(String firstName, String lastName) {
+//        this.id = counter.incrementAndGet();
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -19,14 +20,8 @@ public class User {
         return lastName;
     }
 
-    public String getId() {
+    /*public int getId() {
         return id;
     }
-
-    @Override
-    public String toString() {
-        return "User:" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'';
-    }
+     */
 }

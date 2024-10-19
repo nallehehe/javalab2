@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExpenseStorage {
-    private Map<String, Expense> expenseList = new HashMap<>();
+    private Map<Integer, Expense> expenseList = new HashMap<>();
     private String fileName = "src/main/expense.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -18,7 +18,7 @@ public class ExpenseStorage {
     }
 
     public void readFile() throws IOException {
-        Type type = new TypeToken<Map<String, Expense>>() {}.getType();
+        Type type = new TypeToken<Map<Integer, Expense>>() {}.getType();
 
         Reader reader = new FileReader(fileName);
 
@@ -33,9 +33,7 @@ public class ExpenseStorage {
         if (fileName.isEmpty()) {
             File file = new File(fileName);
         } else {
-            readFile();
-
-            expenseList.put(expense.getUser().getId(), expense);
+            expenseList.put(expense.getId(), expense);
 
             FileWriter fw = new FileWriter(new File(fileName));
 
@@ -45,5 +43,15 @@ public class ExpenseStorage {
 
             System.out.println("Expense saved to " + fileName);
         }
+    }
+
+
+    public Map<Integer, Expense> getExpenseList() {
+        return expenseList;
+    }
+
+    public void addExpense(Expense expense) throws IOException {
+        expenseList.put(expense.getId(), expense);
+        saveFile(expense);
     }
 }

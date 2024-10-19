@@ -1,22 +1,42 @@
 {
   "1": {
     "expenseCategory": "CLOTHING",
-    "amount": 300.0,
-    "date": "16/10/2024",
+    "id": 1,
+    "amount": 123.0,
+    "date": "19/10/2024",
     "user": {
-      "id": "1",
-      "firstName": "nalle",
-      "lastName": "hmm"
+      "firstName": "why",
+      "lastName": "are"
     }
   },
   "2": {
     "expenseCategory": "CLOTHING",
-    "amount": 300.0,
-    "date": "16/10/2024",
+    "id": 2,
+    "amount": 123.0,
+    "date": "19/10/2024",
     "user": {
-      "id": "2",
-      "firstName": "nalle",
-      "lastName": "hmm"
+      "firstName": "test",
+      "lastName": "again"
+    }
+  },
+  "3": {
+    "expenseCategory": "CLOTHING",
+    "id": 3,
+    "amount": 1259.0,
+    "date": "19/10/2024",
+    "user": {
+      "firstName": "test",
+      "lastName": "YES"
+    }
+  },
+  "4": {
+    "expenseCategory": "CLOTHING",
+    "id": 4,
+    "amount": 123.0,
+    "date": "19/10/2024",
+    "user": {
+      "firstName": "PLEASE",
+      "lastName": "WORK"
     }
   }
 }
