@@ -22,7 +22,7 @@ public class BudgetTracker {
                     Expense.createExpense(expenseStorage);
                     break;
                 case 2:
-                    //add income
+                    Expense.updateExpense(expenseStorage);
                     break;
                 case 3:
                     //show all expenses

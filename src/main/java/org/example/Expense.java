@@ -54,4 +54,36 @@ public class Expense extends Transaction{
 
         System.out.println("Create expense " + expense.getId());
     }
+
+    /*ser precis ut som min createexpense metod men istället för att använda mig ut av collections.max
+    * för att hitta det största numret och ge det newId för att aldrig skriva över någon
+    * så har jag en scanner för id där man skriver in själv id:t på json objektet man vill uppdatera
+    * och skriver om alla olika parametrar och skapad igen och skriver över!*/
+    public static void updateExpense(ExpenseStorage expenseStorage) throws IOException {
+        expenseStorage.readFile();
+
+        System.out.println("What expense would you like to update?");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = LocalDate.now().format(formatter);
+
+        System.out.println("First name: ");
+        String firstName = scanner.nextLine();
+
+        System.out.println("Last name: ");
+        String lastName = scanner.nextLine();
+
+        System.out.println("How much did it cost?");
+        double amount = scanner.nextDouble();
+
+        User user = new User(firstName, lastName);
+
+        Expense expense = new Expense(id, amount, date, user, EExpenseCategory.CLOTHING);
+
+        expenseStorage.addExpense(expense);
+
+        System.out.println("update expense " + expense.getId());
+    }
 }

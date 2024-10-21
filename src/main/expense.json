@@ -2,11 +2,11 @@
   "1": {
     "expenseCategory": "CLOTHING",
     "id": 1,
-    "amount": 123.0,
-    "date": "19/10/2024",
+    "amount": 2149240.0,
+    "date": "21/10/2024",
     "user": {
-      "firstName": "why",
-      "lastName": "are"
+      "firstName": "update",
+      "lastName": "now"
     }
   },
   "2": {
@@ -32,11 +32,11 @@
   "4": {
     "expenseCategory": "CLOTHING",
     "id": 4,
-    "amount": 123.0,
-    "date": "19/10/2024",
+    "amount": 123123.0,
+    "date": "21/10/2024",
     "user": {
-      "firstName": "PLEASE",
-      "lastName": "WORK"
+      "firstName": "testupdate",
+      "lastName": "test"
     }
   }
 }
