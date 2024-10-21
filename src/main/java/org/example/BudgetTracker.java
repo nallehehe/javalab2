@@ -16,13 +16,14 @@ public class BudgetTracker {
 
             menu.budgetMenu();
             userInput = scanner.nextInt();
+            scanner.nextLine();
 
             switch (userInput) {
                 case 1:
-                    Expense.createExpense(expenseStorage);
+                    expenseStorage.createExpense();
                     break;
                 case 2:
-                    Expense.updateExpense(expenseStorage);
+                    //
                     break;
                 case 3:
                     //show all expenses
@@ -31,13 +32,13 @@ public class BudgetTracker {
                     //show all incomes
                     break;
                 case 5:
-                    //update an expense
+                    expenseStorage.updateExpense();
                     break;
                 case 6:
                     //update an income
                     break;
                 case 7:
-                    //delete an expense
+                    expenseStorage.deleteExpense();
                     break;
                 case 8:
                     //delete an income
