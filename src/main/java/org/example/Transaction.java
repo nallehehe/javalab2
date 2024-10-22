@@ -1,7 +1,6 @@
 package org.example;
 
 public class Transaction {
-    //private static AtomicInteger counter = new AtomicInteger(0);
     private int id;
     private double amount;
     private String date;

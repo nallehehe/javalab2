@@ -76,13 +76,24 @@ public class ExpenseStorage {
 
         System.out.println("How much did it cost?");
         double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.println("All expense categories: ");
+        for (EExpenseCategory category : EExpenseCategory.values()) {
+            System.out.println(category.getCategoryOption() + ". " + category.name());
+        }
+
+        System.out.println("What category");
+        int category = scanner.nextInt();
+
+        EExpenseCategory selectedCategory = EExpenseCategory.values()[category - 1];
 
         User user = new User(firstName, lastName);
 
         int maxId = expenseList.isEmpty() ? 0 : Collections.max(expenseList.keySet());
         int newId = maxId + 1;
 
-        Expense expense = new Expense(newId, amount, date, user, EExpenseCategory.CLOTHING);
+        Expense expense = new Expense(newId, amount, date, user, selectedCategory);
 
         addExpense(expense);
 
@@ -102,6 +113,7 @@ public class ExpenseStorage {
 
         if (!expenseList.containsKey(id)) {
             System.out.println("That id does not exist");
+            
         } else {
             System.out.println("First name: ");
             String firstName = scanner.nextLine();
@@ -111,12 +123,23 @@ public class ExpenseStorage {
 
             System.out.println("How much did it cost?");
             double amount = scanner.nextDouble();
+            scanner.nextLine();
+
+            System.out.println("All expense categories: ");
+            for (EExpenseCategory category : EExpenseCategory.values()) {
+                System.out.println(category.getCategoryOption() + ". " + category.name());
+            }
+
+            System.out.println("What category");
+            int category = scanner.nextInt();
+
+            EExpenseCategory selectedCategory = EExpenseCategory.values()[category - 1];
 
             User user = new User(firstName, lastName);
 
             String date = expenseList.get(id).getDate();
 
-            Expense expense = new Expense(id, amount, date, user, EExpenseCategory.CLOTHING);
+            Expense expense = new Expense(id, amount, date, user, selectedCategory);
 
             addExpense(expense);
 
@@ -135,12 +158,27 @@ public class ExpenseStorage {
 
         if (!expenseList.containsKey(id)) {
             System.out.println("That id does not exist");
+
         } else {
             expenseList.remove(id);
 
             System.out.println("Expense with the id " + id + " has been deleted.");
 
             saveFile();
+        }
+    }
+
+    public void allExpenses() throws IOException {
+        readFile();
+
+        for(Integer id  : expenseList.keySet()) {
+            Expense expense = expenseList.get(id);
+            System.out.println("Id: " + id );
+            System.out.println("First name: " + expense.getUser().getFirstName());
+            System.out.println("Last name: " + expense.getUser().getLastName());
+            System.out.println("Amount: " + expense.getAmount());
+            System.out.println("Date: " + expense.getDate());
+            System.out.println("Category: " + expense.getExpenseCategory());
         }
     }
 

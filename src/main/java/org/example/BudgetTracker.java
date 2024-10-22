@@ -26,7 +26,7 @@ public class BudgetTracker {
                     //
                     break;
                 case 3:
-                    //show all expenses
+                    expenseStorage.allExpenses();
                     break;
                 case 4:
                     //show all incomes

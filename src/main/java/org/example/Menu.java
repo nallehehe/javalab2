@@ -2,7 +2,7 @@ package org.example;
 
 public class Menu {
     public void budgetMenu() {
-        System.out.println("     Budget App");
+        System.out.println("Budget App \n");
         System.out.println("------------------------");
         System.out.println("[1] - Add expenses");
         System.out.println("[2] - Add incomes");
@@ -13,6 +13,6 @@ public class Menu {
         System.out.println("[7] - Delete an expense");
         System.out.println("[8] - Delete an income");
         System.out.println("[0] - Exit");
-        System.out.print("Choose an option: ");
+        System.out.print("Choose an option: \n");
     }
 }

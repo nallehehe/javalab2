@@ -1,12 +1,22 @@
 {
   "1": {
-    "expenseCategory": "CLOTHING",
+    "expenseCategory": "MISCELLANEOUS",
     "id": 1,
-    "amount": 123.0,
-    "date": "21/10/2024",
+    "amount": 1000.0,
+    "date": "22/10/2024",
     "user": {
-      "firstName": "hello",
-      "lastName": "test"
+      "firstName": "UPDATE",
+      "lastName": "YES"
+    }
+  },
+  "2": {
+    "expenseCategory": "TRANSPORTATION",
+    "id": 2,
+    "amount": 123.0,
+    "date": "22/10/2024",
+    "user": {
+      "firstName": "please stop pranking me",
+      "lastName": "PLEASE"
     }
   }
 }

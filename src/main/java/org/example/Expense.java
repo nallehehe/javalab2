@@ -7,4 +7,8 @@ public class Expense extends Transaction{
         super(id, amount, date, user);
         this.expenseCategory = expenseCategory;
     }
+
+    public EExpenseCategory getExpenseCategory() {
+        return this.expenseCategory;
+    }
 }
