@@ -2,11 +2,11 @@
   "1": {
     "expenseCategory": "CLOTHING",
     "id": 1,
-    "amount": 200.0,
+    "amount": 123.0,
     "date": "21/10/2024",
     "user": {
-      "firstName": "update",
-      "lastName": "works"
+      "firstName": "hello",
+      "lastName": "test"
     }
   }
 }

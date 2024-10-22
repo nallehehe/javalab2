@@ -57,11 +57,11 @@ public class ExpenseStorage {
      * så letade runt för andra lösningar och hittade att jag kunde formatera localdate
      * till String istället vilket fungerade för mig
      *
-     * sen en collections som kollar vad det största idt är i min json-fil och en int som ger det ett +1 så även om programmet stängs ner
+     * sen en collections.max som kollar vad det största idt är i min json-fil och en int som ger det ett +1 så även om programmet stängs ner
      * så kommer den läsa igenom filen för att se vad det största värdet faktiskt är och aldrig skriva över det!
      *
-     * den är halvt ai genererad, testade väldigt mycket med automaticinteger som inte tog mig så jättelångt
-     * vet inte om jag använde den fel eller om det bara inte funkade just i detta scenariot när man ska läsa in i en fil och kolla deras ids*/
+     * den är halvt ai genererad, testade väldigt mycket med atomicinteger och en count++ i min user klass (när jag sparade
+     * id:t där) med det tog mig så jättelångt för hade inget sätt att läsa igenom filen för att hitta det största värdet att lägga +1 på*/
     public void createExpense() throws IOException {
         readFile();
 
@@ -100,39 +100,48 @@ public class ExpenseStorage {
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("First name: ");
-        String firstName = scanner.nextLine();
+        if (!expenseList.containsKey(id)) {
+            System.out.println("That id does not exist");
+        } else {
+            System.out.println("First name: ");
+            String firstName = scanner.nextLine();
 
-        System.out.println("Last name: ");
-        String lastName = scanner.nextLine();
+            System.out.println("Last name: ");
+            String lastName = scanner.nextLine();
 
-        System.out.println("How much did it cost?");
-        double amount = scanner.nextDouble();
+            System.out.println("How much did it cost?");
+            double amount = scanner.nextDouble();
 
-        User user = new User(firstName, lastName);
+            User user = new User(firstName, lastName);
 
-        String date = expenseList.get(id).getDate();
+            String date = expenseList.get(id).getDate();
 
-        Expense expense = new Expense(id, amount, date, user, EExpenseCategory.CLOTHING);
+            Expense expense = new Expense(id, amount, date, user, EExpenseCategory.CLOTHING);
 
-        addExpense(expense);
+            addExpense(expense);
 
-        System.out.println("Expense with the id " + expense.getId() + " has been updated");
+            System.out.println("Expense with the id " + expense.getId() + " has been updated");
+        }
     }
 
     /*instansierar readFile metoden här för att kolla om json-filen redan har existerande data och om id:t är unikt så sparas ett nytt json objekt ner
      * om id:t inte är unikt så skrivs det över! */
     public void deleteExpense() throws IOException {
         readFile();
+
         System.out.println("What expense would you like to delete?");
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        expenseList.remove(id);
+        if (!expenseList.containsKey(id)) {
+            System.out.println("That id does not exist");
+        } else {
+            expenseList.remove(id);
 
-        System.out.println("Expense with the id " + id + " has been deleted.");
+            System.out.println("Expense with the id " + id + " has been deleted.");
 
-        saveFile();
+            saveFile();
+        }
     }
 
     public void addExpense(Expense expense) throws IOException {
