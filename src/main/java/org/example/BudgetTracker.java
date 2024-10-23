@@ -16,7 +16,7 @@ public class BudgetTracker {
 
             menu.budgetMenu();
             userInput = scanner.nextInt();
-            scanner.nextLine();
+                scanner.nextLine();
 
             switch (userInput) {
                 case 1:

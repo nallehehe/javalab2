@@ -80,7 +80,7 @@ public class ExpenseStorage {
 
         System.out.println("All expense categories: ");
         for (EExpenseCategory category : EExpenseCategory.values()) {
-            System.out.println(category.getCategoryOption() + ". " + category.name());
+            System.out.println(category.getExpenseCategory() + ". " + category.name());
         }
 
         System.out.println("What category");
@@ -127,7 +127,7 @@ public class ExpenseStorage {
 
             System.out.println("All expense categories: ");
             for (EExpenseCategory category : EExpenseCategory.values()) {
-                System.out.println(category.getCategoryOption() + ". " + category.name());
+                System.out.println(category.getExpenseCategory() + ". " + category.name());
             }
 
             System.out.println("What category");
@@ -171,8 +171,9 @@ public class ExpenseStorage {
     public void allExpenses() throws IOException {
         readFile();
 
-        for(Integer id  : expenseList.keySet()) {
+        for(int id  : expenseList.keySet()) {
             Expense expense = expenseList.get(id);
+            System.out.println("\n----------------------");
             System.out.println("Id: " + id );
             System.out.println("First name: " + expense.getUser().getFirstName());
             System.out.println("Last name: " + expense.getUser().getLastName());

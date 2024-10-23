@@ -14,7 +14,7 @@ public enum EExpenseCategory {
         this.categoryOption = categoryOption;
     }
 
-    public int getCategoryOption() {
+    public int getExpenseCategory() {
         return categoryOption;
     }
 }

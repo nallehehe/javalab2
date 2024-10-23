@@ -2,7 +2,7 @@ package org.example;
 
 public class Menu {
     public void budgetMenu() {
-        System.out.println("Budget App \n");
+        System.out.println("\nBudget App");
         System.out.println("------------------------");
         System.out.println("[1] - Add expenses");
         System.out.println("[2] - Add incomes");
