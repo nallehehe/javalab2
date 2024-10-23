@@ -1,12 +1,12 @@
 {
   "1": {
-    "expenseCategory": "MISCELLANEOUS",
+    "expenseCategory": "ENTERTAINMENT",
     "id": 1,
-    "amount": 1000.0,
+    "amount": 2000.0,
     "date": "22/10/2024",
     "user": {
-      "firstName": "UPDATE",
-      "lastName": "YES"
+      "firstName": "oops",
+      "lastName": "wrong button"
     }
   },
   "2": {
@@ -17,6 +17,46 @@
     "user": {
       "firstName": "please stop pranking me",
       "lastName": "PLEASE"
+    }
+  },
+  "3": {
+    "expenseCategory": "UTILITIES",
+    "id": 3,
+    "amount": 123.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "1",
+      "lastName": "2"
+    }
+  },
+  "4": {
+    "expenseCategory": "UTILITIES",
+    "id": 4,
+    "amount": 123.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "test",
+      "lastName": "test"
+    }
+  },
+  "5": {
+    "expenseCategory": "MISCELLANEOUS",
+    "id": 5,
+    "amount": 123.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "1",
+      "lastName": "2"
+    }
+  },
+  "6": {
+    "expenseCategory": "MISCELLANEOUS",
+    "id": 6,
+    "amount": 500.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "test",
+      "lastName": "again"
     }
   }
 }

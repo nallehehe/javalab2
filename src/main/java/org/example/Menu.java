@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.InputMismatchException;
+
+import static org.example.BudgetTracker.scanner;
+
 public class Menu {
     public void budgetMenu() {
         System.out.println("\nBudget App");
@@ -15,4 +19,78 @@ public class Menu {
         System.out.println("[0] - Exit");
         System.out.print("Choose an option: \n");
     }
+
+    public static int intMenuTryCatch() {
+        int input = 0;
+
+        while (true) {
+            try {
+                input = scanner.nextInt();
+
+                if (input <= 0 || input > 8) {
+                    System.out.println("Please enter a number between 0 and 8.");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, only numbers are allowed here.");
+                scanner.next();
+            }
+        }
+
+        return input;
+    }
+
+    public static int intTryCatch() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("Not a valid input. Enter numbers only.");
+            }
+        }
+    }
+
+    public static double doubleTryCatch() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            }
+            catch (Exception e) {
+                System.out.println("Please only enter numbers here.");
+                scanner.next();
+            }
+        }
+    }
+
+    public static int categoryTryCatch(int size) {
+        int input = -1;
+        while(true) {
+            try {
+                input = scanner.nextInt();
+                if (input <= 0 || input > size) {
+                    System.out.println("Not a valid number.");
+                } else {
+                    break;
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input, only numbers are allowed here.");
+                scanner.next();
+            }
+        }
+        return input;
+    }
+
+    /*public static String stringTryCatch() {
+        while (true) {
+            try {
+                if (scanner.nextLine().matches("[a-zA-Z]+}")) {
+                    return scanner.nextLine();
+                }
+            } catch (Exception e) {
+                System.out.println("Not a valid input. Try again!");
+            }
+        }
+    }*/
 }

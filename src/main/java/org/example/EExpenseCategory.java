@@ -8,13 +8,14 @@ public enum EExpenseCategory {
     CLOTHING(5),
     MISCELLANEOUS(6);
 
-    private int categoryOption;
+    //https://www.geeksforgeeks.org/enum-customized-value-java/
+    private int expenseCategoryOption;
 
-    private EExpenseCategory(int categoryOption) {
-        this.categoryOption = categoryOption;
+    private EExpenseCategory(int expenseCategoryOption) {
+        this.expenseCategoryOption = expenseCategoryOption;
     }
 
     public int getExpenseCategory() {
-        return categoryOption;
+        return expenseCategoryOption;
     }
 }

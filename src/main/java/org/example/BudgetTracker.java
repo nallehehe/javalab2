@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class BudgetTracker {
     public static Scanner scanner = new Scanner(System.in);
+    public static double budget = 0;
     public static void main(String[] args) throws IOException {
         Menu menu = new Menu();
         ExpenseStorage expenseStorage = new ExpenseStorage();
+        IncomeStorage incomeStorage = new IncomeStorage();
 
 
         int userInput = 0;
@@ -15,33 +17,33 @@ public class BudgetTracker {
         while (true) {
 
             menu.budgetMenu();
-            userInput = scanner.nextInt();
-                scanner.nextLine();
+            userInput = Menu.intMenuTryCatch();
+            scanner.nextLine();
 
             switch (userInput) {
                 case 1:
                     expenseStorage.createExpense();
                     break;
                 case 2:
-                    //
+                    incomeStorage.createIncome();
                     break;
                 case 3:
                     expenseStorage.allExpenses();
                     break;
                 case 4:
-                    //show all incomes
+                    incomeStorage.allIncomes();
                     break;
                 case 5:
                     expenseStorage.updateExpense();
                     break;
                 case 6:
-                    //update an income
+                   incomeStorage.updateIncome();
                     break;
                 case 7:
                     expenseStorage.deleteExpense();
                     break;
                 case 8:
-                    //delete an income
+                    incomeStorage.deleteIncome();
                     break;
                 case 0:
                     System.exit(0);

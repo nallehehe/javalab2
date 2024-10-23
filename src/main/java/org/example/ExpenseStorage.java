@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.example.BudgetTracker.budget;
 import static org.example.BudgetTracker.scanner;
 
 public class ExpenseStorage {
@@ -75,16 +76,18 @@ public class ExpenseStorage {
         String lastName = scanner.nextLine();
 
         System.out.println("How much did it cost?");
-        double amount = scanner.nextDouble();
+        double amount = Menu.doubleTryCatch();
         scanner.nextLine();
+
+        budget -= amount;
 
         System.out.println("All expense categories: ");
         for (EExpenseCategory category : EExpenseCategory.values()) {
             System.out.println(category.getExpenseCategory() + ". " + category.name());
         }
 
-        System.out.println("What category");
-        int category = scanner.nextInt();
+        System.out.println("What category?");
+        int category = Menu.categoryTryCatch(EExpenseCategory.values().length);
 
         EExpenseCategory selectedCategory = EExpenseCategory.values()[category - 1];
 
@@ -108,11 +111,11 @@ public class ExpenseStorage {
         readFile();
 
         System.out.println("What expense would you like to update?");
-        int id = scanner.nextInt();
+        int id = Menu.intTryCatch();
         scanner.nextLine();
 
         if (!expenseList.containsKey(id)) {
-            System.out.println("That id does not exist");
+            System.out.println("An expense with that id does not exist.");
             
         } else {
             System.out.println("First name: ");
@@ -122,7 +125,7 @@ public class ExpenseStorage {
             String lastName = scanner.nextLine();
 
             System.out.println("How much did it cost?");
-            double amount = scanner.nextDouble();
+            double amount = Menu.doubleTryCatch();
             scanner.nextLine();
 
             System.out.println("All expense categories: ");
@@ -130,8 +133,8 @@ public class ExpenseStorage {
                 System.out.println(category.getExpenseCategory() + ". " + category.name());
             }
 
-            System.out.println("What category");
-            int category = scanner.nextInt();
+            System.out.println("What category: ");
+            int category = Menu.categoryTryCatch(EExpenseCategory.values().length);
 
             EExpenseCategory selectedCategory = EExpenseCategory.values()[category - 1];
 
@@ -153,7 +156,7 @@ public class ExpenseStorage {
         readFile();
 
         System.out.println("What expense would you like to delete?");
-        int id = scanner.nextInt();
+        int id = Menu.intTryCatch();
         scanner.nextLine();
 
         if (!expenseList.containsKey(id)) {
