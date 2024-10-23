@@ -44,7 +44,7 @@ public class IncomeStorage {
         fw.close();
     }
 
-    public void createIncome() throws IOException {
+    public void createIncome(Budget budget) throws IOException {
         readFile();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -59,6 +59,8 @@ public class IncomeStorage {
         System.out.println("How much did you recieve?");
         double amount = Menu.doubleTryCatch();
         scanner.nextLine();
+
+        budget.addToBudget(amount);
 
         System.out.println("All income categories: ");
         for (EIncomeCategory category : EIncomeCategory.values()) {
@@ -82,7 +84,7 @@ public class IncomeStorage {
         System.out.println("Income with the id " + income.getId() + " has been created.");
     }
 
-    public void updateIncome() throws IOException {
+    public void updateIncome(Budget budget) throws IOException {
         readFile();
 
         System.out.println("What income would you like to update?");
@@ -92,6 +94,9 @@ public class IncomeStorage {
         if (!incomeList.containsKey(id)) {
             System.out.println("An income with that id does not exist.");
         } else {
+            Income newIncome = incomeList.get(id);
+            double oldIncome = newIncome.getAmount();
+
             System.out.println("First name: ");
             String firstName = scanner.nextLine();
 
@@ -101,6 +106,9 @@ public class IncomeStorage {
             System.out.println("How much did you recieve?");
             double amount = Menu.doubleTryCatch();
             scanner.nextLine();
+
+            budget.addToBudget(amount);
+            budget.deductFromBudget(oldIncome);
 
             System.out.println("All income categories: ");
             for (EIncomeCategory category : EIncomeCategory.values()) {
@@ -123,7 +131,7 @@ public class IncomeStorage {
         }
     }
 
-    public void deleteIncome() throws IOException {
+    public void deleteIncome(Budget budget) throws IOException {
         readFile();
         System.out.println("What income would you like to delete?");
         int id = Menu.intTryCatch();
@@ -131,6 +139,8 @@ public class IncomeStorage {
         if (!incomeList.containsKey(id)) {
             System.out.println("An income with that id does not exist.");
         } else {
+            Income income = incomeList.get(id);
+            budget.deductFromBudget(income.getAmount());
             incomeList.remove(id);
 
             System.out.println("An income with the id " + id + " has been deleted.");

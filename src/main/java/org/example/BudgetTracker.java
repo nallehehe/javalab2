@@ -5,16 +5,17 @@ import java.util.Scanner;
 
 public class BudgetTracker {
     public static Scanner scanner = new Scanner(System.in);
-    public static double budget = 0;
     public static void main(String[] args) throws IOException {
         Menu menu = new Menu();
         ExpenseStorage expenseStorage = new ExpenseStorage();
         IncomeStorage incomeStorage = new IncomeStorage();
+        Budget budget = new Budget(0);
 
 
         int userInput = 0;
 
         while (true) {
+            budget.showBudget();
 
             menu.budgetMenu();
             userInput = Menu.intMenuTryCatch();
@@ -22,10 +23,10 @@ public class BudgetTracker {
 
             switch (userInput) {
                 case 1:
-                    expenseStorage.createExpense();
+                    expenseStorage.createExpense(budget);
                     break;
                 case 2:
-                    incomeStorage.createIncome();
+                    incomeStorage.createIncome(budget);
                     break;
                 case 3:
                     expenseStorage.allExpenses();
@@ -34,16 +35,16 @@ public class BudgetTracker {
                     incomeStorage.allIncomes();
                     break;
                 case 5:
-                    expenseStorage.updateExpense();
+                    expenseStorage.updateExpense(budget);
                     break;
                 case 6:
-                   incomeStorage.updateIncome();
+                   incomeStorage.updateIncome(budget);
                     break;
                 case 7:
-                    expenseStorage.deleteExpense();
+                    expenseStorage.deleteExpense(budget);
                     break;
                 case 8:
-                    incomeStorage.deleteIncome();
+                    incomeStorage.deleteIncome(budget);
                     break;
                 case 0:
                     System.exit(0);

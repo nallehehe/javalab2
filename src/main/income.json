@@ -9,16 +9,6 @@
       "lastName": "update"
     }
   },
-  "2": {
-    "incomeCategory": "SALARY",
-    "id": 2,
-    "amount": 100.0,
-    "date": "2024-10-23",
-    "user": {
-      "firstName": "test",
-      "lastName": "update"
-    }
-  },
   "3": {
     "incomeCategory": "GIFTS",
     "id": 3,
@@ -27,6 +17,16 @@
     "user": {
       "firstName": "test",
       "lastName": "again"
+    }
+  },
+  "4": {
+    "incomeCategory": "RETURNS",
+    "id": 4,
+    "amount": 100.0,
+    "date": "2024-10-23",
+    "user": {
+      "firstName": "test",
+      "lastName": "budget"
     }
   }
 }

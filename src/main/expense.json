@@ -1,22 +1,12 @@
 {
-  "1": {
-    "expenseCategory": "ENTERTAINMENT",
-    "id": 1,
-    "amount": 2000.0,
-    "date": "22/10/2024",
-    "user": {
-      "firstName": "oops",
-      "lastName": "wrong button"
-    }
-  },
   "2": {
-    "expenseCategory": "TRANSPORTATION",
+    "expenseCategory": "UTILITIES",
     "id": 2,
-    "amount": 123.0,
+    "amount": 200.0,
     "date": "22/10/2024",
     "user": {
-      "firstName": "please stop pranking me",
-      "lastName": "PLEASE"
+      "firstName": "Alexander",
+      "lastName": "Angove Lilja"
     }
   },
   "3": {
@@ -57,6 +47,46 @@
     "user": {
       "firstName": "test",
       "lastName": "again"
+    }
+  },
+  "7": {
+    "expenseCategory": "TRANSPORTATION",
+    "id": 7,
+    "amount": 500.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "test",
+      "lastName": "again"
+    }
+  },
+  "8": {
+    "expenseCategory": "ENTERTAINMENT",
+    "id": 8,
+    "amount": 5000.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "test",
+      "lastName": "again"
+    }
+  },
+  "9": {
+    "expenseCategory": "CLOTHING",
+    "id": 9,
+    "amount": 100.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "hehe",
+      "lastName": "lol"
+    }
+  },
+  "10": {
+    "expenseCategory": "TRANSPORTATION",
+    "id": 10,
+    "amount": 5000.0,
+    "date": "23/10/2024",
+    "user": {
+      "firstName": "aorjh",
+      "lastName": "aerhopjaeh"
     }
   }
 }

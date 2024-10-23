@@ -27,7 +27,7 @@ public class Menu {
             try {
                 input = scanner.nextInt();
 
-                if (input <= 0 || input > 8) {
+                if (input < 0 || input > 8) {
                     System.out.println("Please enter a number between 0 and 8.");
                 } else {
                     break;
@@ -47,6 +47,7 @@ public class Menu {
                 return scanner.nextInt();
             } catch (Exception e) {
                 System.out.println("Not a valid input. Enter numbers only.");
+                scanner.next();
             }
         }
     }

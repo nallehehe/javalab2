@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.example.BudgetTracker.budget;
 import static org.example.BudgetTracker.scanner;
 
 public class ExpenseStorage {
@@ -63,7 +62,7 @@ public class ExpenseStorage {
      *
      * den är halvt ai genererad, testade väldigt mycket med atomicinteger och en count++ i min user klass (när jag sparade
      * id:t där) med det tog mig så jättelångt för hade inget sätt att läsa igenom filen för att hitta det största värdet att lägga +1 på*/
-    public void createExpense() throws IOException {
+    public void createExpense(Budget budget) throws IOException {
         readFile();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -79,7 +78,7 @@ public class ExpenseStorage {
         double amount = Menu.doubleTryCatch();
         scanner.nextLine();
 
-        budget -= amount;
+        budget.deductFromBudget(amount);
 
         System.out.println("All expense categories: ");
         for (EExpenseCategory category : EExpenseCategory.values()) {
@@ -107,7 +106,7 @@ public class ExpenseStorage {
      * för att hitta det största numret och ge det newId för att aldrig skriva över någon
      * så har jag en scanner för id där man skriver in själv id:t på json objektet man vill uppdatera
      * och skriver om alla olika parametrar och skapad igen och skriver över!*/
-    public void updateExpense() throws IOException {
+    public void updateExpense(Budget budget) throws IOException {
         readFile();
 
         System.out.println("What expense would you like to update?");
@@ -118,6 +117,9 @@ public class ExpenseStorage {
             System.out.println("An expense with that id does not exist.");
             
         } else {
+            Expense getExpenseAmount = expenseList.get(id);
+            double oldAmount = getExpenseAmount.getAmount();
+
             System.out.println("First name: ");
             String firstName = scanner.nextLine();
 
@@ -127,6 +129,9 @@ public class ExpenseStorage {
             System.out.println("How much did it cost?");
             double amount = Menu.doubleTryCatch();
             scanner.nextLine();
+
+            budget.addToBudget(amount);
+            budget.deductFromBudget(oldAmount);
 
             System.out.println("All expense categories: ");
             for (EExpenseCategory category : EExpenseCategory.values()) {
@@ -152,7 +157,7 @@ public class ExpenseStorage {
 
     /*instansierar readFile metoden här för att kolla om json-filen redan har existerande data och om id:t är unikt så sparas ett nytt json objekt ner
      * om id:t inte är unikt så skrivs det över! */
-    public void deleteExpense() throws IOException {
+    public void deleteExpense(Budget budget) throws IOException {
         readFile();
 
         System.out.println("What expense would you like to delete?");
@@ -163,7 +168,9 @@ public class ExpenseStorage {
             System.out.println("That id does not exist");
 
         } else {
+            Expense expense = expenseList.get(id);
             expenseList.remove(id);
+            budget.addToBudget(expense.getAmount());
 
             System.out.println("Expense with the id " + id + " has been deleted.");
 
