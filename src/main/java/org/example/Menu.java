@@ -52,10 +52,16 @@ public class Menu {
         }
     }
 
+    //kan inte skriva in negativa nummer längre!
     public static double doubleTryCatch() {
         while (true) {
             try {
-                return scanner.nextInt();
+                double input = scanner.nextDouble();
+                if (input < 0) {
+                    System.out.println("Negative numbers are not allowed, try again!");
+                } else {
+                    return input;
+                }
             }
             catch (Exception e) {
                 System.out.println("Please only enter numbers here.");
