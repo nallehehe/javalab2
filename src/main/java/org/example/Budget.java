@@ -10,6 +10,11 @@ public class Budget {
     private double budget;
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    /*min budget klass som har med min budget.json att göra!
+    * ville ha ett sätt att ha en budget som är sparad på samma sätt som min expense och income istället för att
+    * ha ett hårdkodat värde i BudgetTracker så även när programmet stängs ner så
+    * när man startar det igen så är budgetten exakt likadan som man lämnade den */
+
     public Budget(double budget) {
         this.budget = budget;
     }
@@ -21,12 +26,15 @@ public class Budget {
     public void readBudget() throws IOException {
         File file = new File(fileName);
 
-        if (!file.exists()) {
-            file.createNewFile();
-        } else {
-            Reader reader = new FileReader(file);
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                Reader reader = new FileReader(file);
 
-            budget = gson.fromJson(reader, double.class);
+                budget = gson.fromJson(reader, double.class);
+            }
+        } catch (NullPointerException e) {
         }
     }
 

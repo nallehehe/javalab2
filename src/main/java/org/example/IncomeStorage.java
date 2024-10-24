@@ -22,11 +22,19 @@ public class IncomeStorage {
     public IncomeStorage() {
     }
 
+    /*incomeStorage ser nästan exakt likadan ut som ExpenseStorage förutom det när du tar bort en inkomst så
+    * drar den av det från budgetten men i ExpenseStorage så gör den tvärtom*/
+
     public void readFile() throws IOException {
         File file = new File(fileName);
 
         if (!file.exists()) {
             file.createNewFile();
+
+            if (incomeList == null) {
+                System.out.println("Income list is empty.");
+            }
+
         } else {
             Type type = new TypeToken<Map<Integer, Income>>() {}.getType();
 
@@ -152,15 +160,19 @@ public class IncomeStorage {
     public void allIncomes() throws IOException {
         readFile();
 
-        for (int id : incomeList.keySet()) {
-            Income income = incomeList.get(id);
-            System.out.println("\n----------------------");
-            System.out.println("Id: " + id);
-            System.out.println("First name: " + income.getUser().getFirstName());
-            System.out.println("Last name: " + income.getUser().getLastName());
-            System.out.println("Amount: " + income.getAmount());
-            System.out.println("Date: " + income.getDate());
-            System.out.println("Category: " + income.getIncomeCategory());
+        if (incomeList.isEmpty()) {
+            System.out.println("There are no incomes to check");
+        } else {
+            for (int id : incomeList.keySet()) {
+                Income income = incomeList.get(id);
+                System.out.println("\n----------------------");
+                System.out.println("Id: " + id);
+                System.out.println("First name: " + income.getUser().getFirstName());
+                System.out.println("Last name: " + income.getUser().getLastName());
+                System.out.println("Amount: " + income.getAmount());
+                System.out.println("Date: " + income.getDate());
+                System.out.println("Category: " + income.getIncomeCategory());
+            }
         }
     }
 

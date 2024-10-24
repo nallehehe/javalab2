@@ -8,8 +8,8 @@ public class Menu {
     public void budgetMenu() {
         System.out.println("\nBudget App");
         System.out.println("------------------------");
-        System.out.println("[1] - Add expenses");
-        System.out.println("[2] - Add incomes");
+        System.out.println("[1] - Add an expense");
+        System.out.println("[2] - Add an income");
         System.out.println("[3] - Check all expenses");
         System.out.println("[4] - Check all incomes");
         System.out.println("[5] - Update an expense");
@@ -82,6 +82,7 @@ public class Menu {
         }
         return input;
     }
+
 
     /*public static String stringTryCatch() {
         while (true) {
