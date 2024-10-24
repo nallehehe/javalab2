@@ -138,7 +138,6 @@ public class ExpenseStorage {
 
             System.out.println("How much did it cost?");
             double amount = Menu.doubleTryCatch();
-            scanner.nextLine();
 
             budget.deductFromBudget(oldAmount);
             budget.addToBudget(amount);

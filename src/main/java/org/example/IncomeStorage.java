@@ -66,7 +66,6 @@ public class IncomeStorage {
 
         System.out.println("How much did you recieve?");
         double amount = Menu.doubleTryCatch();
-        scanner.nextLine();
 
         budget.addToBudget(amount);
 
@@ -113,7 +112,6 @@ public class IncomeStorage {
 
             System.out.println("How much did you recieve?");
             double amount = Menu.doubleTryCatch();
-            scanner.nextLine();
 
             budget.addToBudget(amount);
             budget.deductFromBudget(oldIncome);
